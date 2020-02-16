@@ -29,21 +29,17 @@ app.get('/search', (req, res) => {
 
   res.render('index', {
     restaurants: restaurantMatches,
-    keyword: req.query.keyword
+    keyword: keyword
   })
 })
 
 // 設定餐廳詳細資料路由
 app.get('/restaurants/:restaurant_id', (req, res) => {
-  id = req.params.restaurant_id
-  restaurantById = restaurantList.results.find(restaurant => id === restaurant.id.toString())
+  const id = req.params.restaurant_id
+  const restaurantById = restaurantList.results.find(restaurant => id === restaurant.id.toString())
 
   res.render('show', { restaurant: restaurantById })
-
-
 })
-
-
 
 // 設定 server 監聽器
 app.listen(port, (req, res) => {
